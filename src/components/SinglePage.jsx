@@ -72,7 +72,7 @@ const SinglePage = ({
         spacing={6}
         direction={{ base: 'column', sm: 'column', md: 'row' }}
       >
-        {textButtonSecondary && <ModalInscription text={textButtonPrimary} />}
+        {textButtonPrimary && <ModalInscription text={textButtonPrimary} />}
         {textButtonSecondary && (
           <Button rounded={'full'} px={6} size="lg">
             {textButtonSecondary}

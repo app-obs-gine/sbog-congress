@@ -29,7 +29,7 @@ const Hero = () => {
   return (
     <Page
       bgColor={palettes.green}
-      vh={{ base: '85vh', sm: '250vh', md: '110vh' }}
+      vh={{ base: '250vh', sm: '250vh', md: '110vh' }}
     >
       <SinglePage
         bgColor={palettes.green}

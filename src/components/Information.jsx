@@ -8,7 +8,7 @@ const Information = () => {
   return (
     <Page
       bgColor={palettes.gray}
-      vh={{ base: '85vh', sm: '250vh', md: '110vh' }}
+      vh={{ base: '250vh', sm: '250vh', md: '110vh' }}
     >
       <Heading
         fontWeight={600}

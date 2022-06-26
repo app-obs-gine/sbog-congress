@@ -1,10 +1,5 @@
 import {
   Button,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
-  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -15,19 +10,10 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import { useRef, useState } from 'react';
+import FormInscription from './FormInscription';
 
 const ModalInscription = ({ text }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const initialRef = useRef(null);
-  const finalRef = useRef(null);
-
-  const [input, setInput] = useState('');
-
-  const handleInputChange = (e) => setInput(e.target.value);
-
-  const isError = input === '';
 
   return (
     <>
@@ -42,13 +28,7 @@ const ModalInscription = ({ text }) => {
       >
         {text}
       </Button>
-      <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={isOpen}
-        onClose={onClose}
-        size="xl"
-      >
+      <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader mt={4}>
@@ -59,24 +39,8 @@ const ModalInscription = ({ text }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            
-            <FormControl isInvalid={isError}>
-              <FormLabel htmlFor="email">Email</FormLabel>
-              <Input
-                id="email"
-                type="email"
-                value={input}
-                onChange={handleInputChange}
-              />
-              {!isError ? (
-                <FormHelperText>
-                  Enter the email you'd like to receive the newsletter on.
-                </FormHelperText>
-              ) : (
-                <FormErrorMessage>Email is required.</FormErrorMessage>
-              )}
-            </FormControl>
-            
+            {/* Form of the inscription */}
+            <FormInscription />
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3}>

@@ -1,30 +1,58 @@
 import {
   Box,
   Button,
-  Divider,
   Heading,
   HStack,
   Icon,
-  List,
-  ListIcon,
-  ListItem,
   Stack,
   Text,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { palettes } from '../helpers/theme';
+import ModalInscription from './ModalInscription';
 import Page from './Page';
+import TableContent from './TableContent';
+
+const titlesTable = [
+  { title: '', key: '1' },
+  { title: 'Inscripción hasta 31/07/2022', key: '2' },
+  { title: 'Inscripción a partir del 01/08/2022 ', key: '3' },
+  { title: '', key: '4' },
+];
+
+const contentRow1 = [
+  { content: 'Socios titulares (Cuotas al día)', key: '1' },
+  { content: 'Bs. 600 ', key: '2' },
+  { content: 'Bs. 700 ', key: '3' },
+  { content: <ModalInscription text="Inscripciones" />, key: '4' },
+];
+const contentRow2 = [
+  { content: 'Médicos Especialistas ', key: '1' },
+  { content: 'Bs. 800 ', key: '2' },
+  { content: 'Bs. 900 ', key: '3' },
+  { content: <ModalInscription text="Inscripciones" />, key: '4' },
+];
+const contentRow3 = [
+  { content: 'Médicos Generales y otros profesionales en salud', key: '1' },
+  { content: 'Bs. 400 ', key: '2' },
+  { content: 'Bs. 500 ', key: '3' },
+  { content: <ModalInscription text="Inscripciones" />, key: '4' },
+];
+const contentRow4 = [
+  { content: 'Residentes y Estudiantes', key: '1' },
+  { content: 'Bs. 250 ', key: '2' },
+  { content: 'Bs. 350 ', key: '3' },
+  { content: <ModalInscription text="Inscripciones" />, key: '4' },
+];
+const rows = [
+  { contentTable: contentRow1, key: '1' },
+  { contentTable: contentRow2, key: '2' },
+  { contentTable: contentRow3, key: '2' },
+  { contentTable: contentRow4, key: '2' },
+];
 
 const Payment = () => {
-  const PackageTier = ({
-    title,
-    options,
-    typePlan,
-    checked = false,
-    firstPayment,
-    secondPayment,
-  }) => {
+  const PackageTier = ({ title, firstPayment, secondPayment }) => {
     return (
       <Stack
         p={3}
@@ -75,7 +103,7 @@ const Payment = () => {
   return (
     <Page
       bgColor={palettes.green}
-      vh={{ base: '80vh', sm: '70vh', md: '80vh' }}
+      vh={{ base: '110vh', sm: '70vh', md: '80vh' }}
     >
       <Box px={5} min={'100vh'}>
         <Heading fontSize={'3xl'} color="white" mb={5}>
@@ -87,33 +115,9 @@ const Payment = () => {
         </Text>
 
         <Stack spacing={4} width={'100%'} direction={'column'} mt={5}>
-          <Divider />
-          <PackageTier
-            title={'Socios titulares (Cuotas al día) '}
-            typePlan="Free"
-            firstPayment="Bs. 600"
-            secondPayment="Bs. 700"
-          />
-          <Divider />
-          <PackageTier
-            title={'Médicos Especialistas'}
-            checked={true}
-            firstPayment="Bs. 800"
-            secondPayment="Bs. 900"
-          />
-          <Divider />
-          <PackageTier
-            title={'Médicos Generales y otros profesionales en salud'}
-            firstPayment="Bs. 400"
-            secondPayment="Bs. 500"
-          />
-          <Divider />
-          <PackageTier
-            title={'Residentes y Estudiantes'}
-            firstPayment="Bs. 250"
-            secondPayment="Bs. 350"
-          />
+          <TableContent titles={titlesTable} rows={rows} />
         </Stack>
+
         <Stack
           p={5}
           alignItems={'center'}
